@@ -1,4 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
+
   var host = sequelize.define("host", {
     host_name: {
       type: DataTypes.STRING,
@@ -14,6 +15,13 @@ module.exports = function(sequelize, DataTypes) {
       len: [10,10]
       }
     },
+    host_pass: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    validate: {
+      len: [5,16]
+      }
+    },
     address: {
       type: DataTypes.STRING,
       allowNull: false
@@ -25,5 +33,37 @@ module.exports = function(sequelize, DataTypes) {
     
   });
 
-  return host;
+  var user = sequelize.define("user", {
+    user_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    validate: {     
+      len: [1]
+      }
+    },
+    user_pass: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    validate: {
+      len: [5,10]
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
+    
+  });
+
+  var user = sequelize.define("rating", {
+    likes: {
+      type: DataTypes.INTEGER
+    },
+    dislikes: {
+      type: DataTypes.INTEGER
+    }
+    
+  });
+
+  return host, user, rating;
 };
