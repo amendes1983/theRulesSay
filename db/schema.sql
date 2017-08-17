@@ -1,0 +1,26 @@
+DROP DATABASE if exists therulessay;
+CREATE DATABASE therulessay;
+USE therulessay;
+
+CREATE TABLE host(
+  id INT  NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL,
+  phone INT(10) NOT NULL,
+  address VARCHAR(100) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE rating(
+  id INT NOT NULL AUTO_INCREMENT,
+  likes INT(10),
+  dislikes INT(10),
+  PRIMARY KEY(id)
+);
+
+CREATE TABLE user(
+  id INT  NOT NULL AUTO_INCREMENT,
+  name VARCHAR(20) NOT NULL,
+  email VARCHAR(100) NOT NULL,
+  PRIMARY KEY(id)
+);
