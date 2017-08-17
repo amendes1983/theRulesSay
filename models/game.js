@@ -8,18 +8,18 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
       }
     },
-    host_phone: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    validate: {
-      len: [10,10]
-      }
-    },
     host_pass: {
       type: DataTypes.STRING,
       allowNull: false,
     validate: {
       len: [5,16]
+      }
+    },    
+    host_phone: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    validate: {
+      len: [10,10]
       }
     },
     address: {
