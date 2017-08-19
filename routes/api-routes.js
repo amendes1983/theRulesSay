@@ -1,5 +1,7 @@
 var db = require("../models/");
 
+module.exports = function(app) {
+
   app.post("/signup", function(req, res) {
     db.host.create({
       host_name: req.body.host_name,
@@ -26,3 +28,5 @@ var db = require("../models/");
     });
   });
 
+  
+};
