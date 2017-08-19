@@ -1,0 +1,26 @@
+{
+  "name": "therulessay",
+  "version": "1.0.0",
+  "description": "A web app that is made by gamers for gamers.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csandowich/theRulesSay.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csandowich/theRulesSay/issues"
+  },
+  "homepage": "https://github.com/csandowich/theRulesSay#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "mysql2": "^1.4.0",
+    "sequelize": "^4.5.0"
+  }
+}
