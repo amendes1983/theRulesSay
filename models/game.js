@@ -14,6 +14,15 @@ module.exports = function(sequelize, DataTypes) {
     validate: {
       len: [5,16]
       }
+    },
+    password_confirmation: {
+    type: DataTypes.STRING     
+    },
+    password_digest: {
+    type: DataTypes.STRING,
+    validate: {
+      notEmpty: true
+      }
     },    
     host_phone: {
       type: DataTypes.INTEGER,
@@ -28,7 +37,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+              isEmail: true,
+              notEmpty: true
+      }
     }
     
   });
@@ -48,14 +61,27 @@ module.exports = function(sequelize, DataTypes) {
       len: [5,10]
       }
     },
+    password_confirmation: {
+    type: DataTypes.STRING
+    },
+    password_digest: {
+    type: DataTypes.STRING,
+    validate: {
+      notEmpty: true
+      }
+    },
     email: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      validate: {
+              isEmail: true,
+              notEmpty: true
+      }
     }
     
   });
 
-  var user = sequelize.define("rating", {
+  var rating = sequelize.define("rating", {
     likes: {
       type: DataTypes.INTEGER
     },
