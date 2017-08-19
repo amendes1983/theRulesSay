@@ -1,6 +1,6 @@
 var db = require("../models/");
 
-  app.post("/signup/create", function(req, res) {
+  app.post("/signup", function(req, res) {
     db.host.create({
       host_name: req.body.host_name,
       host_pass: req.body.host_pass,
@@ -13,3 +13,16 @@ var db = require("../models/");
       res.status(400).json(err);
     });
   });
+
+  app.post("/signup", function(req, res) {
+    db.user.create({
+      user_name: req.body.host_name,
+      user_pass: req.body.host_pass,
+      email: req.body.email
+    }).then(function(dbUser) {
+    res.json(dbUser);
+    }).catch(function(err) {
+      res.status(400).json(err);
+    });
+  });
+
