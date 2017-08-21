@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="../assets/style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -19,6 +20,7 @@
     <div class="nav-wrapper grey darken-4 ">
       <a href="#!" class="brand-logo center"><strong>THE RULES SAY!</strong></a>
       <ul class="left hide-on-med-and-down">
+        <li class="active"><a href="view.html">Home</a></li>
         <li class="active"><a href="sass.html">Games</a></li>
         <li class="active"><a href="badges.html">Search</a></li>
         <li class="active"><a href="collapsible.html">Player</a></li>
@@ -29,6 +31,8 @@
   </div>
   </nav>
   <br>
+<div class="">
+<section id="form">
   <form action="#">
     <p>
       <input name="group1" type="radio" id="test1" />
@@ -40,23 +44,12 @@
     </p>
 
   </form>
-  <br
-  <div class="row">
+  <br>
    <form class="col s10">
      <div class="row">
-       <div class="input-field col s6">
-         <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-         <label for="first_name">First Name</label>
-       </div>
-       <div class="input-field col s6">
-         <input id="last_name" type="text" class="validate">
-         <label for="last_name">Last Name</label>
-       </div>
-     </div>
-     <div class="row">
        <div class="input-field col s12">
-         <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-         <label for="disabled">Disabled</label>
+         <input id="first_name" type="text" class="validate">
+         <label for="first_name">Name</label>
        </div>
      </div>
      <div class="row">
@@ -66,24 +59,47 @@
        </div>
      </div>
      <div class="row">
+       <div id="telephone" class="input-field col s12">
+         <input id="password" type="password" class="validate">
+         <label for="password">Telephone</label>
+       </div>
+     </div>
+      <div class="row">
+         <div class="input-field col s12">
+           <textarea id="textarea1" class="materialize-textarea"></textarea>
+           <label for="textarea1">Address</label>
+         </div>
+       </div>
+     <div class="row">
        <div class="input-field col s12">
          <input id="email" type="email" class="validate">
          <label for="email">Email</label>
        </div>
      </div>
-     <div class="row">
-       <div class="col s12">
-         This is an inline input field:
-         <div class="input-field inline">
-           <input id="email" type="email" class="validate">
-           <label for="email" data-error="wrong" data-success="right">Email</label>
-         </div>
-       </div>
-     </div>
+     <button id="submitbutton" class="btn waves-effect waves-light" type="submit" name="action">Submit
+
+  </button>
    </form>
- </div>
- <br>
-  <footer class="page-footer grey darken-4">
+ </section>
+ <aside id="card" class="">
+
+
+ <div class="row">
+        <div id="divcard" class="col s12 m7">
+          <div class="card">
+            <div class="card-image">
+              <img src="../assets/images/welcome.jpg">
+              <span id="oneofus" class="card-title"></span>
+            </div>
+            <div class="card-content">
+              <p>Just fill in your information on the left and join the network for tabletop gamers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </aside>
+      </div>
+  <footer id="signupfoot" class="page-footer fixed grey darken-4">
     <div class="container">
       <div class="row">
         <div class="col l6 s12">
