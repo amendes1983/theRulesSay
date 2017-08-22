@@ -1,14 +1,25 @@
 var express = require("express");
 var bodyParser = require("body-parser");
+var session = require("express-session");
+var passport = require("passport");
 var PORT = process.env.PORT || 3000;
 var app = express();
 app.use(express.static("./public"));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(session({
+	secret: 'games',
+	resave: false,
+	saveUninitialized: true,
+	cookie: { secure: true}
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
-require("./routes/html-routes.js")(app);
-require("./routes/api-routes.js")(app);
+require("./routes/html-routes.js")(app, passport);
+require("./routes/api-routes.js")(app, passport);
+require("./config/passport.js")(passport);
 var db = require("./models/");
 
 db.sequelize.sync().then(function() {
