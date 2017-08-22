@@ -1,3 +1,5 @@
+"use strict";
+
 var bcrypt = require("bcrypt");
 
 module.exports = function(sequelize, DataTypes) {
@@ -16,16 +18,7 @@ module.exports = function(sequelize, DataTypes) {
     validate: {
       len: [5,16]
       }
-    },
-    password_confirmation: {
-    type: DataTypes.STRING     
-    },
-    password_digest: {
-    type: DataTypes.STRING,
-    validate: {
-      notEmpty: true
-      }
-    },    
+    },  
     host_phone: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -43,9 +36,20 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
               isEmail: true,
               notEmpty: true
+        }
+      }
+    },
+    {
+    classMethods: {
+      generateHash: function(host_pass) {
+        return bcrypt.hashSync(host_pass, bcrypt.genSaltSync(9));
+      }
+    },
+    instanceMethods: {
+      validPassword: function(host_pass) {
+        return bcrypt.compareSync(host_pass, this.host_pass);    
       }
     }
-    
   });
 
   var user = sequelize.define("user", {
@@ -63,21 +67,24 @@ module.exports = function(sequelize, DataTypes) {
       len: [5,10]
       }
     },
-    password_confirmation: {
-    type: DataTypes.STRING
-    },
-    password_digest: {
-    type: DataTypes.STRING,
-    validate: {
-      notEmpty: true
-      }
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
               isEmail: true,
               notEmpty: true
+        }
+      }
+    },
+   { 
+    classMethods: {
+      generateHash: function(user_pass) {
+        return bcrypt.hashSync(user_pass, bcrypt.genSaltSync(9));
+      }
+    },
+    instanceMethods: {
+      validPassword: function(user_pass) {
+        return bcrypt.compareSync(user_pass, this.user_pass);
       }
     }
     
@@ -92,22 +99,6 @@ module.exports = function(sequelize, DataTypes) {
     }
     
   });
-
-host.methods.generateHash = function(host_pass) {
-    return bcrypt.hashSync(host_pass, bcrypt.genSaltSync(9));
-  }
-
-host.methods.validPassword = function(host_pass) {
-  return bcrypt.compareSync(host_pass, this.local.host_pass);
-}
-
-user.methods.generateHash = function(user_pass) {
-    return bcrypt.hashSync(user_pass, bcrypt.genSaltSync(9));
-  }
-
-user.methods.validPassword = function(user_pass) {
-  return bcrypt.compareSync(user_pass, this.local.user_pass);
-}
 
   return host, user, rating;
 };
