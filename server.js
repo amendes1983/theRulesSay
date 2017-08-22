@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var session = require("express-session");
 var passport = require("passport");
+var flash = require("connect-flash");
 var PORT = process.env.PORT || 3000;
 var app = express();
 app.use(express.static("./public"));
@@ -14,6 +15,7 @@ app.use(session({
 	saveUninitialized: true,
 	cookie: { secure: true}
 }));
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
