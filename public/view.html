@@ -3,6 +3,7 @@
 
 <head>
   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>The Rules Say</title>
   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
@@ -21,100 +22,92 @@
 
 </head>
 <nav>
-  <div class="nav-wrapper  grey darken-3">
+  <div class="nav-wrapper  grey darken-4">
     <a href="#!" class="brand-logo center"><strong>THE RULES SAY!</strong></a>
     <ul class="left hide-on-med-and-down">
-      <li class="active"><a href="sass.html">Games</a></li>
-      <li class="active"><a href="badges.html">Search</a></li>
-      <li class="active"><a href="collapsible.html">Player</a></li>
-      <li class="active"><a href="collapsible.html">Host</a></li>
+      <li class="active"><a href="view.html">Home</a></li>
+      <li class="active"><a href="games.html">Games</a></li>
+      <li class="active"><a href="user.html">Player</a></li>
+      <li class="active"><a href="host.html">Host</a></li>
+      <li class="active"><a href="signup.html">Sign-up</a></li>
     </ul>
 </nav>
 </div>
 </nav>
 <ul class="collapsible" data-collapsible="accordion">
-  <li>
-    <div class="collapsible-header"><i class="material-icons"></i>Login</div>
-    <ul class="collapsible" data-collapsible="accordion">
+   <li>
+     <div class="collapsible-header"><i class="material-icons"></i>LOGIN</div>
+     <div class="collapsible-body">
+       <input placeholder="Frodo" id="userName" type="text" class="validate">
+      <label for="userName"> Name</label>
+      <input placeholder="Password" id="passWord" type="text" class="validate">
+     <label for="passWord">Password</label>
+     <a id="subButton" class="waves-effect waves-light btn">Submit</a>
+     </div>
+   </li>
 
-<<<<<<< HEAD
-<body background=<a href="http://imgur.com/FL92pD8" style="font-family: Times;"><img class="responsive-img" src="http://i.imgur.com/FL92pD8.jpg" title="source: imgur.com" /></a>
-=======
-  </li>
-  </ul>
->>>>>>> 9cd22dcc5def08d2a496b3028437144710cf0abb
-
+ </ul>
   <body>
-
-
-
     <div class="slider">
       <ul class="slides">
         <li>
           <img class="responsive-img" src="https://static.pexels.com/photos/80729/discworld-80729.jpeg">
-          <!-- random image -->
+
           <div class="caption center-align">
             <h3>Games</h3>
             <h5 class="light grey-text text-lighten-3">Find a game you want to play.</h5>
-            <a class="waves-effect waves-light btn-large">Button</a>
+            <a href="games.html" class="waves-effect waves-light btn-large">Select</a>
           </div>
         </li>
-        <li>
-          <img class="responsive-img" src="https://static.pexels.com/photos/84663/pexels-photo-84663.jpeg">
-          <!-- random image -->
-          <div class="caption left-align">
-            <h3>Search</h3>
-            <h5 class="light grey-text text-lighten-3">Look for an experience that suits you.</h5>
-            <a class="waves-effect waves-light btn-large">Button</a>
-          </div>
-        </li>
+
         <li>
           <img class="responsive-img" src="https://static.pexels.com/photos/209728/pexels-photo-209728.jpeg">
-          <!-- random image -->
+
           <div class="caption right-align">
             <h3>Player</h3>
             <h5 class="light grey-text text-lighten-3">Login in as a player here.</h5>
-            <a class="waves-effect waves-light btn-large">Button</a>
+            <a href="user.html" class="waves-effect waves-light btn-large">Select</a>
           </div>
         </li>
         <li>
           <img class="responsive-img" src="https://static.pexels.com/photos/260024/pexels-photo-260024.jpeg">
-          <!-- random image -->
+
           <div class="caption center-align">
             <h3>Host</h3>
             <h5 class="light grey-text text-lighten-3">Login in to host a game here.</h5>
-            <a class="waves-effect waves-light  btn-large">Button</a>
+            <a href="host.html" class="waves-effect waves-light  btn-large">Select</a>
           </div>
         </li>
       </ul>
     </div>
-    <footer class="page-footer  grey darken-3">
-      <div class="container">
-        <div class="row">
-          <div class="col l6 s12">
-            <h5 class="white-text">The Rules Say!</h5>
-            <p class="grey-text text-lighten-4">All the gaming experiences you want, with the people you want them with.</p>
-          </div>
-          <div class="col l4 offset-l2 s12">
-            <h5 class="white-text">Links</h5>
-            <ul>
-              <li><a class="grey-text text-lighten-3" href="#!">Games</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Search</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Player</a></li>
-              <li><a class="grey-text text-lighten-3" href="#!">Host</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-copyright black">
-        <div class="container">
-          © 2017 Copyright The Rules Say
-          <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-        </div>
-      </div>
-    </footer>
+
     </container>
 
   </body>
-
+  <footer class="page-footer  grey darken-4">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">The Rules Say!</h5>
+          <p class="grey-text text-lighten-4">All the gaming experiences you want, with the people you want them with.</p>
+        </div>
+        <div class="col l4 offset-l2 s12">
+          <h5 class="white-text">Links</h5>
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="view.html">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="games.html">Games</a></li>
+            <li><a class="grey-text text-lighten-3" href="user.html">Player</a></li>
+            <li><a class="grey-text text-lighten-3" href="host.html">Host</a></li>
+            <li><a class="grey-text text-lighten-3" href="signup.html">Sign-up</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright black">
+      <div class="container">
+        © 2017 Copyright The Rules Say
+        <a class="grey-text text-lighten-4 right" href="https://boardgamegeek.com/">For more info on great games, Click here!</a>
+      </div>
+    </div>
+  </footer>
 </html>

@@ -1,18 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./assets/css/style.css" media="screen" title="no title">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<title>Game</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>All the best games!</title>
+  <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.1/js/materialize.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.slider').slider();
+    })
+  </script>
+
 </head>
-<body>
-<script type="text/javascript">
+<nav>
+  <div class="nav-wrapper  grey darken-4">
+    <a href="#!" class="brand-logo center"><strong>All the best games!</strong></a>
+    <ul class="left hide-on-med-and-down">
+      <li class="active"><a href="view.html">Home</a></li>
+      <li class="active"><a href="games.html">Games</a></li>
+      <li class="active"><a href="user.html">Player</a></li>
+      <li class="active"><a href="host.html">Host</a></li>
+      <li class="active"><a href="signup.html">Sign-up</a></li>
+    </ul>
+</nav>
+</div>
+</nav>
+<container>
+  <ul class="collapsible" data-collapsible="accordion">
 
-</script>
 
+     <li>
+       <div id="dungeonDragon" class="collapsible-header"><i class="material-icons"></i>Dungeons and Dragons</div>
+       <div class="collapsible-body">
+         <p id="dungeonData"></p>
+       </div>
+     </li>
+
+     <li>
+       <div id="Gloomhaven"  class="collapsible-header"><i class="material-icons"></i>Gloomhaven</div>
+       <div class="collapsible-body">
+         <p id="havenData"></p>
+       </div>
+     </li>
+
+     <li>
+       <div id="Ticket" class="collapsible-header"><i class="material-icons"></i>Ticket to Ride</div>
+       <div  class="collapsible-body">
+         <p id="ticketData"></p>
+     </li>
+   </ul>
+</container>
+</div>
 </body>
+<footer class="page-footer  grey darken-4">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">The Rules Say!</h5>
+        <p class="grey-text text-lighten-4">All the gaming experiences you want, with the people you want them with.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="games.html">Games</a></li>
+          <li><a class="grey-text text-lighten-3" href="user.html">Player</a></li>
+          <li><a class="grey-text text-lighten-3" href="host.html">Host</a></li>
+          <li><a class="grey-text text-lighten-3" href="signup.html">Sign-up</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright black">
+    <div class="container">
+      © 2017 Copyright The Rules Say
+      <a class="grey-text text-lighten-4 right" href="https://boardgamegeek.com/">For more info on great games, Click here!</a>
+    </div>
+  </div>
+</footer>
+
 </html>
