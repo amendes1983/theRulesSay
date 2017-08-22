@@ -1,7 +1,6 @@
 console.log('hellow');
 
-function checkRadioButton() {
-
+function checkRadioButton(event) {
   if (document.getElementById('test1').checked)
 
   {
@@ -15,11 +14,11 @@ function checkRadioButton() {
         user_pass: $("#password").val().trim(),
         email: $("#email").val().trim()
       };
-      $.post("/signup", newUser)
+      $.post("/signup/user", newUser)
         .done(function(data) {
-          console.log(data);
-          window.location.href = "/";
+          console.log(data);      
         });
+         window.location.href = "/signup";
     });
   } else if(document.getElementById('test2').checked) {
     $("#icon_telephone").attr('disabled', false);
@@ -35,13 +34,13 @@ function checkRadioButton() {
         address: $("#textarea1").val().trim(),
         email: $("#email").val().trim()
       };
-      $.post("/signup", newHost)
+      $.post("/signup/host", newHost)
         .done(function(data) {
-          console.log(data);
+          console.log(data);        
         });
+         window.location.href = "/signup";
     });
 }
 }
-checkRadioButton();
 $('#test1').on('click' ,checkRadioButton);
 $('#test2').on('click' ,checkRadioButton);

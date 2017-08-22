@@ -1,6 +1,6 @@
 var LocalStrategy = require("passport-local").Strategy;
 
-var User = require("../models/game.js");
+var db = require("../models/");
 
 module.exports = function(passport) {
 
@@ -9,7 +9,7 @@ module.exports = function(passport) {
 	});
 
 	passport.deserializeUser(function(id, done) {
-		User.findById(id, function(err, user) {
+		db.host.findById(id, function(err, user) {
 			done(err, user);
 		});
 	});
@@ -24,7 +24,7 @@ module.exports = function(passport) {
 	},
 	function(req, host_name, password, done) {
 		process.nextTick(function() {
-			User.findOne({ host: host_name}, function(err, user) {
+			db.host.findOne({ host: host_name}, function(err, user) {
 				if(err)
 					return done(err);
 				if(user) {
@@ -33,5 +33,34 @@ module.exports = function(passport) {
 				}
 			})
 		})
-	}))
+	}));
+
+	passport.serializeUser(function(user, done) {
+		done(null, user.id);
+	});
+
+	passport.deserializeUser(function(id, done) {
+		db.user.findById(id, function(err, user) {
+			done(err, user);
+		});
+	});
+
+	passport.use("user-signup", new LocalStrategy({
+		user_name: "user_name",
+		user_pass: "user_pass",
+		email: "email",
+		passReqToCallback: true
+	},
+	function(req, host_name, password, done) {
+		process.nextTick(function() {
+			db.user.findOne({ user: user_name}, function(err, user) {
+				if(err)
+					return done(err);
+				if(user) {
+					return done(null, false, req.flash("signupMessage",
+						"Username already used"));
+				}
+			})
+		})
+	}));	
 }
