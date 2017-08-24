@@ -1,3 +1,5 @@
+
+
 html {
   font-family: 'Roboto', sans-serif;
  }
@@ -6,18 +8,11 @@ body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  margin-bottom: 100px;
-  clear: both;
+
 }
 
 main {
   flex: 1 0 auto;
-}
-.page-footer{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-
 }
 
 #form {
@@ -29,10 +24,13 @@ main {
   box-sizing: border-box;
 }
 #card{
+
+  top: -100px;
   float: right;
   width: 30%;
   padding: 10px;
   box-sizing: border-box;
+  padding-top: 68px;
 }
 #divcard{
   margin-top: 80px;
@@ -48,16 +46,15 @@ main {
   color: #f57c00;
   margin-right: 5px;
 }
-
-#letsimage{
-  height: 200px;
+#signupfoot{
+  padding-top: 0;
+  position: fixed;
+  bottom: 0;
   width: 100%;
 }
-#letsplay{
-  background-image: url(images/play.png);
-  background-position: center;
-  background-size: 100%;
-  height: 200px;
+#viewfooter{
+  padding-top: 0;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-
 }
