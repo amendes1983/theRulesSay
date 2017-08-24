@@ -1,3 +1,5 @@
+
+
 html {
   font-family: 'Roboto', sans-serif;
  }
@@ -22,10 +24,13 @@ main {
   box-sizing: border-box;
 }
 #card{
+
+  top: -100px;
   float: right;
   width: 30%;
   padding: 10px;
   box-sizing: border-box;
+  padding-top: 68px;
 }
 #divcard{
   margin-top: 80px;
@@ -42,8 +47,14 @@ main {
   margin-right: 5px;
 }
 #signupfoot{
+  padding-top: 0;
   position: fixed;
   bottom: 0;
   width: 100%;
-
+}
+#viewfooter{
+  padding-top: 0;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
