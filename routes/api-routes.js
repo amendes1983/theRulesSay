@@ -16,6 +16,7 @@ module.exports = function(app, passport) {
     });
   });
 
+
   app.post("/signup/user", function(req, res) {
     db.user.create({
       user_name: req.body.user_name,
@@ -28,5 +29,4 @@ module.exports = function(app, passport) {
     });
   });
 
-  
-};
+}

@@ -4,36 +4,26 @@ var db = require("../models/");
 
 module.exports = function(passport) {
 
-	passport.serializeUser(function(user, done) {
-		done(null, user.id);
+	passport.serializeUser(function(host, done) {
+		done(null, host);
 	});
 
-	passport.deserializeUser(function(id, done) {
-		db.host.findById(id, function(err, user) {
-			done(err, user);
+	passport.deserializeUser(function(host, done) {
+		db.host.find({where: {id: host.id}}).success(function(host) {
+			done(null, host);
+		}).err(function(err) {
+			done(err, null)
 		});
 	});
 
-	passport.use("host-signup", new LocalStrategy({
-		host_name: "host_name",
-		host_pass: "host_pass",
-		host_phone: "host_phone",
-		address: "address",
-		email: "email",
-		passReqToCallback: true
-	},
-	function(req, host_name, password, done) {
-		process.nextTick(function() {
-			db.host.findOne({ host: host_name}, function(err, user) {
-				if(err)
-					return done(err);
-				if(user) {
-					return done(null, false, req.flash("signupMessage",
-						"Username already used"));
-				}
-			})
-		})
-	}));
+	passport.use(new LocalStrategy(
+		function(username, password, done) {
+			db.Host.find({where: {host_name: username}}).success(function(host) {
+				passwd = host ? host.password : ""
+				isMatch = db.host.validPassword(host_pass, passwd, done, host)
+			});
+		}));
+
 
 	passport.serializeUser(function(user, done) {
 		done(null, user.id);
@@ -51,14 +41,26 @@ module.exports = function(passport) {
 		email: "email",
 		passReqToCallback: true
 	},
-	function(req, host_name, password, done) {
+	function(req, user_name, user_pass, done) {
 		process.nextTick(function() {
-			db.user.findOne({ user: user_name}, function(err, user) {
+			db.user.findOne({ users: user_name}, function(err, user) {
 				if(err)
 					return done(err);
 				if(user) {
 					return done(null, false, req.flash("signupMessage",
 						"Username already used"));
+				}
+				else {
+					var newUser = new db.user();
+
+					newUser.users.user_name = user_name;
+					newUser.users.user_pass = newUser.generateHash(user_pass);
+
+					newUser.save(function(err) {
+						if (err)
+							throw err;
+						return done(null, newUser);
+					})
 				}
 			})
 		})
