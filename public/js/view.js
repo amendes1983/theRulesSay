@@ -5,10 +5,3 @@ $("#subButton").on("click", function(event) {
         user_pass: $("#passWord").val().trim(),
 
     };
-
-    $.post("/signin", existUser)
-        .done(function(data) {
-            window.location.href = "view.html";
-            console.log(data)
-        });
-});
