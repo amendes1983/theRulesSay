@@ -41,16 +41,32 @@ module.exports = function(sequelize, DataTypes) {
     },
     {
     classMethods: {
-      generateHash: function(host_pass) {
-        return bcrypt.hashSync(host_pass, bcrypt.genSaltSync(9));
+      validPassword: function(host_pass, passwd, done, user) {
+          bcrypt.compare(host_pass, passwd, function(err, isMatch) {
+            if (err) console.log(err);
+            if (isMatch) {
+              return done(null, user)
+            }
+            else {
+              return done(null, false)
+            }
+          });       
       }
-    },
-    instanceMethods: {
-      validPassword: function(host_pass) {
-        return bcrypt.compareSync(host_pass, this.host_pass);    
-      }
+    }    
+  },
+  {
+      dialect: "mysql"
     }
+);
+host.hook("beforeCreate", function(user, fn) {
+  var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
+    return salt
   });
-
+  bcrypt.hash(user.host_pass, salt, null, function(err, hash) {
+    if(err) return next(err);
+    user.host_pass = hash;
+    return fn(null, user)
+  });
+})
   return host;
 };

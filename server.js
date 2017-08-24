@@ -5,12 +5,14 @@ var passport = require("passport");
 var flash = require("connect-flash");
 var PORT = process.env.PORT || 3000;
 var app = express();
+
+SALT_WORK_FACTOR = 12;
 app.use(express.static("./public"));
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
-	secret: 'games',
+	secret: 'therulessay',
 	resave: false,
 	saveUninitialized: true,
 	cookie: { secure: true}
