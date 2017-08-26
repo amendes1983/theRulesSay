@@ -19,6 +19,7 @@
   "homepage": "https://github.com/csandowich/theRulesSay#readme",
   "dependencies": {
     "bcrypt": "^1.0.2",
+    "bgg": "^1.0.1",
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
     "express": "^4.15.4",
