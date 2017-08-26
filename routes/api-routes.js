@@ -36,15 +36,12 @@ app.post("/login/host", function(req, res) {
       host_name: req.body.host_name
     }
   }).then(function(user) {
-    console.log(user.validPassword(user.host_pass));
-    if (!user) {
-      res.redirect("/");
-    } else if (!user.validPassword(password)) {
-      res.redirect("/");
+    console.log(user.validPassword(req.body.password));
+    if (user && user.validPassword(req.body.password)) {
+      return res.status(200).json({message: "Login Successful"});
     }
     else {
-      req.session.user = user.dataValues;
-      res.redirect("/game");
+      return res.status(401).json({message: "Login Failed"});
     }
   });
 });
@@ -55,7 +52,7 @@ app.post("/login/user", function(req, res) {
       user_name: req.body.user_name
     }
   }).then(function(user) {
-    console.log(user.validPassword(user.user_pass));
+    console.log(user.validPassword(password));
     if (!user) {
       res.redirect("/");
     } else if (!user.validPassword(password)) {
