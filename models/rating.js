@@ -8,5 +8,13 @@ module.exports = function(sequelize, DataTypes) {
     }
     
   });
-  return rating;
+rating.associate = function(models) {
+	rating.belongsTo(models.host, {
+		foreignKey: {
+			allowNull: false
+		}
+	});
 }
+  return rating;
+
+};

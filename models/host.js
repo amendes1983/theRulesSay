@@ -38,35 +38,22 @@ module.exports = function(sequelize, DataTypes) {
               notEmpty: true
         }
       }
-    },
-    {
-    classMethods: {
-      validPassword: function(host_pass, passwd, done, user) {
-          bcrypt.compare(host_pass, passwd, function(err, isMatch) {
-            if (err) console.log(err);
-            if (isMatch) {
-              return done(null, user)
-            }
-            else {
-              return done(null, false)
-            }
-          });       
+},  {    
+    hooks: {
+      beforeCreate: (host) => {
+        const salt = bcrypt.genSaltSync();
+        host.host_pass = bcrypt.hashSync(host.host_pass, salt);
       }
-    }    
-  },
-  {
-      dialect: "mysql"
     }
-);
-host.hook("beforeCreate", function(user, fn) {
-  var salt = bcrypt.genSalt(SALT_WORK_FACTOR, function(err, salt) {
-    return salt
   });
-  bcrypt.hash(user.host_pass, salt, null, function(err, hash) {
-    if(err) return next(err);
-    user.host_pass = hash;
-    return fn(null, user)
-  });
-})
+
+host.prototype.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.host_pass)  
+};
+  host.associate = function(models) {
+    host.hasMany(models.rating, {
+      onDelete: "cascade"
+    });
+  };
   return host;
 };

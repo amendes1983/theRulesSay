@@ -23,18 +23,16 @@ module.exports = function(sequelize, DataTypes) {
         }
       }
     },
-   { 
-    classMethods: {
-      generateHash: function(user_pass) {
-        return bcrypt.hashSync(user_pass, bcrypt.genSaltSync(9));
-      }
-    },
-    instanceMethods: {
-      validPassword: function(user_pass) {
-        return bcrypt.compareSync(user_pass, this.user_pass);
+    {    
+    hooks: {
+      beforeCreate: (user) => {
+        const salt = bcrypt.genSaltSync();
+        user.user_pass = bcrypt.hashSync(user.user_pass, salt);
       }
     }
-    
   });
+user.prototype.validPassword = function(password) {
+  return bcrypt.compareSync(password, this.user_pass)  
+};
   return user;
 }
