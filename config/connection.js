@@ -1,7 +1,18 @@
 var Sequelize = require("sequelize");
 
+if (process.env.JAWSDB_URL) {
+var	sequelize = new Sequelize(process.env.JAWSDB_URL, {
+		dialect: "mysql",
+		pool: {
+			max: 5,
+			min: 0,
+			idle: 10000
+		}
+	})
+}
 
-var sequelize = new Sequelize("therulessay", "root", "", {
+else {
+var	sequelize = new Sequelize("therulessay", "root", "", {
   host: "localhost",
   dialect: "mysql",
   pool: {
@@ -10,5 +21,6 @@ var sequelize = new Sequelize("therulessay", "root", "", {
     idle: 10000
   }
 });
+};
 
 module.exports = sequelize;
